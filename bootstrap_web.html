@@ -23,26 +23,48 @@
 
     <style>
         .form__container {
-            display: none; /* Initially hide the form */
+            display: none;
+            /* Initially hide the form */
             position: absolute;
             opacity: 0;
         }
+
+        #box {
+            display: block;
+        }
     </style>
 
-<script>
-    function status() {
-        var formContainer = document.getElementById('box');
-        var btn = document.getElementById('btn');
+    <script>
+        function status() {
+            var formContainer = document.getElementById('box');
+            var btn = document.getElementById('btn');
 
-        if (formContainer.style.display === 'none') {
-            formContainer.style.display = 'block'; // Show the form
-            btn.value = '닫기'; // Change button text to "닫기"
-        } else {
-            formContainer.style.display = 'none'; // Hide the form
-            btn.value = '열기'; // Change button text to "열기"
+            if (formContainer.style.display === 'none') {
+                formContainer.style.display = 'block'; // Show the form
+                btn.value = '닫기'; // Change button text to "닫기"
+            } else {
+                formContainer.style.display = 'none'; // Hide the form
+                btn.value = '열기'; // Change button text to "열기"
+            }
         }
-    }
-</script>
+
+        function openclose() {
+            // var id = $('#id').val();
+            // var pw = $('#pw').val();
+            let status = $("#box").css("display");
+            if (status == "block") {
+                console.log("open");
+                $('#box').show();
+            } else {
+                console.log("closed");
+                $('#box').hide();
+            }
+
+
+            // $('#boxx').show();
+        }
+
+    </script>
 </head>
 
 <body>
@@ -50,23 +72,26 @@
         <h1 class="display-4">나홀로 링크 메모장 !</h1>
         <p class="lead">중요한 링크를 저장해두고 나중에 볼 수 있음.</p>
         <hr class="my-4">
-        <input type="button" id="btn" value="열기" onclick="status()">
+        <input type="button" id="btn" value="열기" onclick="openclose()">
     </div>
 
-    <div style="width: 1000px; margin: auto; border: 3px solid; border-radius: 10px; padding: 20px;">
-    <form id="box">
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+    <div class="boxx" id="boxx"
+        style="width: 1000px; margin: auto; border: 3px solid; border-radius: 10px; padding: 20px;">
+        <form id="box">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" value="id"
+                    aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" value="pw" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 
     <!-- card -->
     <div class="card-group">
